@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <meta property="og:title" content="NeuralSVG: An Implicit Representation for Text-to-Vector Generation"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:image" content="static/images/og_tag_header_image.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+
+
+    <title>NeuralSVG</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link rel="icon" href="static/figures_nsvg/punk.png">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+</head>
+<body>
+
+
+<section class="publication-header">
+    <div class="hero-body">
+        <div class="container is-max-widescreen">
+            <!-- <div class="columns is-centered"> -->
+            <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">NeuralSVG: An Implicit Representation for Text-to-Vector Generation</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="publication-author-block">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <div class="is-size-3 publication-authors">
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><a href="https://www.nyan.cat" target="_blank">Sagi Polaczek</a><sup>1</sup>,</span>
+                        <span class="author-block"><a href="https://yuval-alaluf.github.io/" target="_blank">Yuval Alaluf</a><sup>1</sup>,</span>
+                        <span class="author-block"><a href="https://eladrich.github.io/" target="_blank">Elad Richardson</a><sup>1</sup>,</span>           
+                        <span class="author-block"><a href="https://yael-vinker.github.io/website/" target="_blank">Yael Vinker</a><sup>1,2</sup>,</span>           
+                        <span class="author-block"><a href="https://danielcohenor.com/" target="_blank">Daniel Cohen-Or</a><sup>1</sup></span>
+                    </div>
+                                        
+                    <div class="is-size-6 publication-authors">
+                        <span class="author-block">1 - Tel Aviv University</span>
+                    </div>
+                    <div class="is-size-6 publication-authors">
+                        <span class="author-block">2 - MIT CSAIL</span>
+                    </div>
+                                                    
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+              
+                        <span class="link-block">
+                            <a href="" target="_blank"
+                            class="external-link button is-normal is-rounded">
+                            <span class="icon">
+                                <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arXiv</span>
+                            </a>
+                        </span>
+
+                        <span class="link-block">
+                            <a class="external-link button is-normal is-rounded is-disabled" 
+                               style="pointer-events: none; opacity: 0.5;">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Coming Soon</span>
+                            </a>
+                        </span>
+                                                </a>
+                        </span>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hero is-small">
+    <!-- <div class="hero-body"> -->
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <!-- <div id="results-carousel" class="carousel results-carousel"> -->
+                <div class="container">
+                    <div class="item">
+                        <div class="column is-centered has-text-centered">
+                            <img class="large-image" src="static/figures_nsvg/teaser-1.png" alt="NeTI"/>
+                            <h2 class="subtitle">
+                                NeuralSVG generates vector graphics from text prompts with ordered and editable shapes. 
+                                Our method supports dynamic conditioning, such as background color, which facilitating the generation 
+                                of multiple color palettes for a single learned representation.
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <!--  </div> -->
+            </div>
+        </div>
+        <!--  </div> -->
+    </section>
+
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <!-- div class="item">
+                      <p style="margin-bottom: 30px">
+                    <video poster="" id="tree" autoplay controls muted loop height="100%">
+                      <source src="static/figures/video.mp4"
+                      type="video/mp4">
+                    </video>
+                    </p>
+                    </div -->
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Vector graphics are essential in design, providing artists with a versatile medium for creating resolution-independent
+                             and highly editable visual content. Recent advancements in vision-language and diffusion models have fueled interest 
+                             in text-to-vector graphics generation. However, existing approaches often suffer from over-parameterized outputs or 
+                             treat the layered structure --- a core feature of vector graphics --- as a secondary goal, diminishing their practical 
+                             use. Recognizing the importance of layered SVG representations, we propose NeuralSVG, an implicit neural representation
+                              for generating vector graphics from text prompts. Inspired by Neural Radiance Fields (NeRFs), NeuralSVG encodes the 
+                              entire scene into the weights of a small MLP network, optimized using Score Distillation Sampling (SDS). To encourage 
+                              a layered structure in the generated SVG, we introduce a dropout-based regularization technique that strengthens the 
+                              standalone meaning of each shape. We additionally demonstrate that utilizing a neural representation provides an added 
+                              benefit of inference-time control, enabling users to dynamically adapt the generated SVG based on user-provided inputs, 
+                              all with a single learned representation. Through extensive qualitative and quantitative evaluations, we demonstrate that 
+                              NeuralSVG outperforms existing methods in generating structured and flexible SVG.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <!-- <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title has-text-centered">Video</h2>
+          <center>
+            <iframe width="630" height="354" src="" title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen></iframe>
+          </center>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-centered">Examples of Text-to-Vector Generation <br> with NeuralSVG
+                </h2>
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures_nsvg/examples_generation_1.png" alt="generation_1" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures_nsvg/examples_generation_2.png" alt="generation_2" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures_nsvg/examples_generation_3.png" alt="generation_3" width="95%"/>
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img src="static/figures_nsvg/examples_generation_4.png" alt="generation_4" width="95%"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-light">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">How Does it Work?</h2>
+                    <div class="content has-text-justified">
+                    </div>
+                    <div class="column is-centered has-text-centered">
+                        <img class="large-image" src="static/figures_nsvg/method.png" alt="neuralsvg" />
+                    </div>
+                    <ul class="column is-centered has-text-justified">
+                      <li> We learn an implicit neural representation for generating vector graphics from text prompts. We encode the SVG into the weights of a small MLP network, optimized using an Score Distillation Sampling (SDS).
+                      </li>
+                      <br>
+                      <li> To promote an ordered representation, we use a dropout-based technique to encourages each learned shape to have a meaningful and ordered role in the overall scene.
+                      </li>
+                      <br>
+                      <li> Our neural representation enables inference-time control over the generated asset such as dynamically adjusting the color palette or aspect ratio of the generated SVG, all with a single learned representation.
+                      </li>
+                      <br>
+                    </ul>
+                </div>
+            </div>
+          </p>
+        </div>
+    </section>
+
+    <section class="section hero">
+        <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">What Can it Do?</h2>
+                    <div class="content has-text-centered">
+                    </div>
+                    <h3 class="title is-4">Encouraging Ordered Representation with Nested Dropout</h3>
+                    <p class="content has-text-centered">
+                        We show results generated by our method when keeping a varying number of learned shapes in the final rendering. Even with a small number of shapes, our approach effectively captures the coarse structure of the scene.
+                    </p>
+                </div>
+            </div>
+            <div id="results-carousel-2" class="carousel results-carousel">
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures_nsvg/examples_dropout_rooster.png" alt="dropout_1" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures_nsvg/examples_dropout_avocados.png" alt="dropout_2" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures_nsvg/examples_dropout_sun_hat.png" alt="dropout_3" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures_nsvg/examples_dropout_earth.png" alt="dropout_4" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures_nsvg/examples_dropout_bunny.png" alt="dropout_5" width="80%"/>
+                </div>
+                <div class="column is-centered has-text-centered">
+                    <img src="static/figures_nsvg/examples_dropout_astronaut.png" alt="dropout_6" width="80%"/>
+                </div>
+            </div>
+
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                  <div class="content has-text-centered">
+                  </div>
+                  <h3 class="title is-4">Color Palette Control</h3>
+                  <p class="content has-text-centered"> 
+                    Given a learned representation, we render the result using different background colors specified by the user, resulting in varying color palettes in the resulting SVGs. The upper row shows colors observed during training while the bottom row shows unobserved (generalized) colors.
+                  </p>
+              </div>
+          </div>
+          <div id="results-carousel-3" class="carousel results-carousel">
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures_nsvg/examples_control_color_spaceship.png" alt="colors_1" width="120%"/>
+              </div>
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures_nsvg/examples_control_color_peacock.png" alt="colors_2" width="120%"/>
+              </div>
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures_nsvg/examples_control_color_dragon.png" alt="colors_3" width="120%"/>
+              </div>
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures_nsvg/examples_control_color_sydney.png" alt="colors_4" width="120%"/>
+              </div>
+              <div class="column is-centered has-text-centered">
+                  <img src="static/figures_nsvg/examples_control_color_ming.png" alt="colors_5" width="120%"/>
+              </div>
+          </div>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <div class="content has-text-centered">
+                </div>
+                <h3 class="title is-4">Aspect Ratio Control</h3>
+                <p class="content has-text-centered">
+                    We present results from optimizing NeuralSVG with aspect ratios of 1:1 and 4:1. In each pair, the left image displays the generated SVG with a 1:1 aspect ratio (square format), while the right image shows the model's output with a 4:1 aspect ratio.
+                </p>
+            </div>
+        </div>
+        <div id="results-carousel-4" class="carousel results-carousel">
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_aspect_ratio_superman.png" alt="mixing_1" width="70%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_aspect_ratio_sportscar.png" alt="mixing_2" width="70%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_aspect_ratio_dog.png" alt="mixing_3" width="70%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_aspect_ratio_penguin.png" alt="mixing_4" width="70%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_aspect_ratio_train.png" alt="mixing_5" width="70%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_aspect_ratio_hat.png" alt="mixing_6" width="70%"/>
+            </div>
+        </div>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <div class="content has-text-centered">
+                </div>
+                <h3 class="title is-4">Sketch Generation</h3>
+                <p class="content has-text-centered">
+                    NeuralSVG generates sketches with varying numbers of strokes using a single network, without any modifications to the framework.
+                </p>
+            </div>
+        </div>
+        <div id="results-carousel-4" class="carousel results-carousel">
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_sketches_ballerina.png" alt="sketches_1" width="80%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_sketches_flamingo.png" alt="sketches_2" width="80%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_sketches_rose.png" alt="sketches_3" width="80%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_sketches_boat.png" alt="sketches_4" width="80%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_sketches_vase.png" alt="sketches_5" width="80%"/>
+            </div>
+            <div class="column is-centered has-text-centered">
+                <img src="static/figures_nsvg/examples_sketches_margarita.png" alt="sketches_6" width="80%"/>
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page.
+                        If you want to reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+</body>
+</html>
