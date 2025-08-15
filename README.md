@@ -16,6 +16,9 @@
 
 
 ## 🔥 NEWS
+
+**`2025/08/01`**: See you in **ICCV 2025** 🍻!
+
 **`2025/04/17`**: Our code is released!
 
 **`2025/01/07`**: Paper is out!
