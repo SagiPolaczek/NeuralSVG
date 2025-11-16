@@ -19,7 +19,7 @@ log:
 model:
   mlp_dim: 128
   mlp_num_layers: 2
-  text2img_model: stabilityai/stable-diffusion-2-1-base
+  text2img_model: SagiPolaczek/stable-diffusion-2-1-base
   lora_weights: ./lora_weights/lora_weights_sd21b_bg_color.safetensors
   use_color: true
   use_nested_dropout: true
